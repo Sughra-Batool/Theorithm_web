@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'BoomBox';
+    src: url('BoomBox.woff2') format('woff2'),
+        url('BoomBox.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bree Serif';
+    src: url('BreeSerif-BoldItalic.woff2') format('woff2'),
+        url('BreeSerif-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bree Serif';
+    src: url('BreeSerif-Bold.woff2') format('woff2'),
+        url('BreeSerif-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bree Serif';
+    src: url('BreeSerif-Italic.woff2') format('woff2'),
+        url('BreeSerif-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bree Serif';
+    src: url('BreeSerif-Regular.woff2') format('woff2'),
+        url('BreeSerif-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Subway Novella';
+    src: url('SubwayNovella.woff2') format('woff2'),
+        url('SubwayNovella.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

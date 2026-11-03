@@ -342,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // --- CONFIGURATION ---
       // PASTE YOUR DEPLOYED WEB APP URL HERE
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbxw4kT91VyVnfy5dreoVWiV-vmODhByVLuzGB037dSwqafkLMj9mbIEi_dE4dmHnozhyA/exec'; 
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbx5RY9vQDjO5qpBkmbcTJ3H8yQqQ6oZslHtxzfzIv6lzUyEjyowEdm-ivL2SMm2QK4k/exec'; 
 
       // Gather form data
       const formData = new FormData(contactForm);

@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'BoomBox';
-    src: url('../fonts/BoomBox.woff2') format('woff2'),
-         url('../fonts/BoomBox.woff')  format('woff');
+    src: url('/fonts/BoomBox.woff2') format('woff2'),
+         url('/fonts/BoomBox.woff')  format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -1721,7 +1721,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); /* Optional: adds a very subtle depth */
 }
 
-.font-boombox {
+.thrm-wrap>.font-boombox {
   font-family: 'BoomBox';
   font-size: 0.85rem;
   color: var(--thrm-ink);
@@ -1941,5 +1941,95 @@
     margin-left: auto;
     margin-right: auto;
     display: block;
+  }
+}
+
+/* ==========================================================================
+   FAQ & Legal Navigation Blocks (Centered)
+   ========================================================================== */
+.thrm-nav-blocks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: max-content;
+  max-width: var(--thrm-max, 1240px); /* Constrains the width to match your site's max width */
+  margin: 30px auto; /* Centers the block on the page with spacing above and below */
+  margin-bottom: 80px;
+  border: 1px solid #e5e5e5;
+  overflow: hidden; /* Keeps the inner background colors inside the rounded corners */
+}
+
+.thrm-nav-block {
+  flex: 1;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the content horizontally */
+  justify-content: center;
+  text-align: center; /* Centers the text */
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Dark Block (FAQ) */
+.thrm-nav-block--dark {
+  background-color: #1a1a1a;
+}
+.thrm-nav-block--dark:hover {
+  background-color: #2a2a2a;
+}
+.thrm-nav-block--dark .thrm-nav-block__kicker {
+  color: #a0a0a0;
+}
+.thrm-nav-block--dark .thrm-nav-block__title {
+  color: #ffffff;
+}
+
+/* Light Block (Legal) */
+.thrm-nav-block--light {
+  background-color: #e5e5e5;
+  border-left: 1px solid #d4d4d4; /* Subtle divider between the two halves */
+}
+.thrm-nav-block--light:hover {
+  background-color: #d4d4d4;
+}
+.thrm-nav-block--light .thrm-nav-block__kicker {
+  color: #666666;
+}
+.thrm-nav-block--light .thrm-nav-block__title {
+  color: #1a1a1a;
+}
+
+/* Typography */
+.thrm-nav-block__kicker {
+  font-family: var(--thrm-sans);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.thrm-nav-block__title {
+  font-family: var(--thrm-sans);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+/* Responsive adjustment for tablets and mobiles */
+@media (max-width: 768px) {
+  .thrm-nav-blocks {
+    flex-direction: column;
+    margin: 40px auto;
+  }
+  
+  .thrm-nav-block {
+    padding: 40px 20px;
+  }
+
+  .thrm-nav-block--light {
+    border-left: none;
+    border-top: 1px solid #d4d4d4; /* Moves the divider to the top when stacked */
   }
 }
