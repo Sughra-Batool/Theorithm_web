@@ -376,3 +376,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Select all links that have the data-path attribute
+  const navLinks = document.querySelectorAll('a[data-path]');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      // We only want to prevent default behavior if we are on the same page
+      const targetId = this.getAttribute('href');
+      
+      if (targetId && targetId.startsWith('#')) {
+        e.preventDefault(); // Stop default anchor jump
+
+        // 1. Get the target element
+        const targetElement = document.querySelector(targetId);
+        
+        // 2. Smooth scroll to the target
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        } else if (targetId === '#thrm-roadmap') {
+          // If logo is clicked, scroll to the very top
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 3. Get the clean URL path and update the address bar
+        const cleanPath = this.getAttribute('data-path');
+        if (cleanPath) {
+          // history.pushState(stateObj, title, url)
+          window.history.pushState({ path: cleanPath }, '', cleanPath);
+        }
+
+        // 4. Close mobile menu if it's open
+        const mobileMenu = document.getElementById('thrm-header-mobile');
+        const mobileToggle = document.querySelector('.thrm-header__toggle');
+        if (mobileMenu && mobileMenu.classList.contains('is-open')) {
+          mobileMenu.classList.remove('is-open');
+          if (mobileToggle) {
+            mobileToggle.setAttribute('aria-expanded', 'false');
+          }
+        }
+      }
+    });
+  });
+});
