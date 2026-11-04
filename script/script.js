@@ -1,3 +1,39 @@
+document.addEventListener('DOMContentLoaded', () => {
+  // --- 1. RESTORE PATH FROM 404 REDIRECT ---
+  const redirectPath = sessionStorage.getItem('redirectPath');
+  if (redirectPath) {
+    window.history.replaceState(null, '', redirectPath);
+    sessionStorage.removeItem('redirectPath');
+  }
+
+  // --- 2. AUTOMATICALLY SCROLL TO SECTION ON REFRESH ---
+  const urlToSectionMap = {
+    '/home': 'thrm-roadmap',
+    '/research': 'thrm-research',
+    '/technology': 'thrm-tech',
+    '/human-excellence': 'thrm-human',
+    '/assurance-native': 'thrm-p04',
+    '/learning': 'thrm-p01',
+    '/quantum-computing': 'thrm-p05',
+    '/photonic-computing': 'thrm-p07',
+    '/faq': 'thrm-faq',
+    '/contact-us': 'thrm-contact',
+    '/legal': 'thrm-legal' /* <-- Added this to match your footer link */
+  };
+
+  const currentPath = window.location.pathname;
+  if (urlToSectionMap[currentPath]) {
+    const targetId = urlToSectionMap[currentPath];
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      setTimeout(() => {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  }
+
+
+  
 (function () {
   'use strict';
 
@@ -419,4 +455,5 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+});
 });
