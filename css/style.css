@@ -72,10 +72,9 @@
 .thrm-eyebrow{
   display:inline-flex; align-items:center; gap:10px;
   font-family:var(--thrm-eyebrow);
-  font-size:clamp(0.85rem, 3vw, 1.65rem); /* FIXED for mobile */
-  letter-spacing:.22em;
+  font-size:clamp(0.5rem, 2vw, 0.9rem);
   text-transform:uppercase;
-  color:#d1d1d1;
+  color:#e5e7e7;
   margin-bottom:20px;
 }
 .thrm-eyebrow::before{
@@ -896,7 +895,7 @@
 }
 .thrm-layer:hover::before,
 .thrm-layer:focus-within::before{ transform:scaleY(1); }
-.thrm-layer__head{ display:flex; align-items:baseline; gap:12px; }
+.thrm-layer__head{ display:flex; align-items:baseline; gap:12px; padding-block-end: 0.75rem; }
 .thrm-layer__num{
   font-family:var(--thrm-mono);
   font-size:11px;
@@ -1417,7 +1416,7 @@
 .thrm-header__logo{
   font-family:'Michroma','Roboto',sans-serif;
   font-weight:700;
-  font-size:19px;
+  font-size:16px;
   letter-spacing:0.01em;
   color:#111111;
   text-decoration:none;
@@ -1443,7 +1442,7 @@
   display:inline-block;
   padding:9px 16px;
   font-family:'Roboto',sans-serif;
-  font-size:14px;
+  font-size:11px;
   font-weight:500;
   color:#4B5563;
   text-decoration:none;
@@ -1553,7 +1552,7 @@
 .thrm-legal{
   position:relative;
   background:var(--thrm-paper);
-  padding:72px 0;
+  padding:72px 0 10px;
   scroll-margin-top:24px;
 }
 @media (min-width:768px){
@@ -1601,7 +1600,7 @@
 .thrm-faq{
   position:relative;
   background:var(--thrm-white);
-  padding:72px 0 88px;
+  padding:32px 0 50px;
   scroll-margin-top:24px;
 }
 @media (min-width:768px){
@@ -2170,4 +2169,290 @@
   .thrm-overlay {
     padding: 20px 12px;
   }
+}
+
+/* ==========================================================================
+   FAQ Section Redesign (Matches Image exactly)
+   ========================================================================== */
+
+/* 1. Dark Header Block */
+.thrm-faq__hero-block {
+  background-color: #1a1a1a;
+  padding: 25px 10px;
+  display: inline-block;
+  margin-bottom: 40px;
+}
+
+.thrm-faq__hero-kicker {
+  display: block;
+  font-family: var(--thrm-sans);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #a0a0a0;
+  margin-bottom: 12px;
+  max-width: 920px;
+}
+
+.thrm-faq__hero-title {
+  font-family: var(--thrm-mic);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* 2. Master Toggle Button (Styled exactly like a standard FAQ item) */
+.thrm-faq__master-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 920px;
+  padding: 20px 24px;
+  background: var(--thrm-white);
+  border: 1px solid var(--thrm-line);
+  border-radius: 14px; /* FIXED: Reverted from 50px to your original 14px */
+  box-shadow: var(--thrm-shadow-1);
+  cursor: pointer;
+  font-family: var(--thrm-sans);
+  font-size: 15.5px;
+  font-weight: 500;
+  color: var(--thrm-ink);
+  transition: border-color 0.25s var(--thrm-ease), box-shadow 0.3s var(--thrm-ease), transform 0.25s var(--thrm-ease);
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.thrm-faq__master-btn:hover {
+  border-color: var(--thrm-line-strong);
+  box-shadow: var(--thrm-shadow-2);
+  transform: translateY(-2px);
+}
+
+/* 3. Inner Buttons (Reset borders to prevent the double border) */
+.thrm-faq__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 20px 24px;
+  border: 0; /* FIXED: Removed border because the parent .thrm-faq__item already has one */
+  background: transparent;
+  font-family: var(--thrm-sans);
+  font-size: 15.5px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--thrm-ink);
+  text-align: left;
+  cursor: pointer;
+  border-radius: 14px;
+  transition: color 0.2s ease;
+}
+
+.thrm-faq__q:hover {
+  color: #000000;
+}
+
+/* 4. Spacing for the items when open */
+.thrm-faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Matched to your original gap */
+  margin-top: 12px;
+}
+
+.thrm-faq__item {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 5. Collapsible Mechanics */
+.thrm-faq__list-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(.22,.61,.36,1);
+}
+
+.thrm-faq__list-wrapper > .thrm-faq__list {
+  overflow: hidden;
+}
+
+/* Open State for Master Toggle */
+.thrm-faq__master-btn[aria-expanded="true"] + .thrm-faq__list-wrapper {
+  grid-template-rows: 1fr;
+}
+
+/* Inner Answer Panel Mechanics */
+.thrm-faq__a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(.22,.61,.36,1);
+}
+
+.thrm-faq__item:has(.thrm-faq__q[aria-expanded="true"]) .thrm-faq__a {
+  grid-template-rows: 1fr;
+}
+
+.thrm-faq__a-inner {
+  overflow: hidden;
+}
+
+.thrm-faq__a-inner p {
+  padding: 0 24px 22px; /* Restored original padding */
+  margin: 0;
+  color: var(--thrm-body); /* Restored original color */
+  font-size: 14.5px;
+  line-height: 1.72; /* Restored original line-height */
+}
+
+/* 6. Plus/Minus Icon Animation */
+.thrm-faq__icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+}
+
+.thrm-faq__icon::before,
+.thrm-faq__icon::after {
+  content: "";
+  position: absolute;
+  background: var(--thrm-ink);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.thrm-faq__icon::before {
+  top: 50%; left: 0;
+  width: 100%; height: 2px; /* Restored original 2px thickness */
+  transform: translateY(-50%);
+}
+
+.thrm-faq__icon::after {
+  top: 0; left: 50%;
+  width: 2px; height: 100%; /* Restored original 2px thickness */
+  transform: translateX(-50%);
+}
+
+/* Rotate plus to minus when open */
+.thrm-faq__q[aria-expanded="true"] .thrm-faq__icon::after,
+.thrm-faq__master-btn[aria-expanded="true"] .thrm-faq__icon::after {
+  transform: translateX(-50%) rotate(90deg);
+  opacity: 0;
+}
+
+/* ==========================================================================
+   Legal Section Redesign (Matches Image exactly)
+   ========================================================================== */
+
+/* 1. Grey Header Block */
+.thrm-legal__hero-block {
+  background-color: #e5e5e5; /* Grey background from image */
+  padding: 30px 40px;
+  display: inline-block;
+  margin-bottom: 40px;
+}
+
+.thrm-legal__hero-kicker {
+  display: block;
+  font-family: var(--thrm-sans);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #666666; /* Dark grey text */
+  margin-bottom: 12px;
+}
+
+.thrm-legal__hero-title {
+  font-family: var(--thrm-mic);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #1a1a1a; /* Near black text */
+  margin: 0;
+}
+
+/* 2. Master Toggle Button (Same as FAQ) */
+.thrm-legal__master-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 24px;
+  background: var(--thrm-white);
+  border: 1px solid var(--thrm-line);
+  border-radius: 14px;
+  box-shadow: var(--thrm-shadow-1);
+  cursor: pointer;
+  font-family: var(--thrm-sans);
+  font-size: 15.5px;
+  font-weight: 500;
+  color: var(--thrm-ink);
+  transition: border-color 0.25s var(--thrm-ease), box-shadow 0.3s var(--thrm-ease), transform 0.25s var(--thrm-ease);
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.thrm-legal__master-toggle:hover {
+  border-color: var(--thrm-line-strong);
+  box-shadow: var(--thrm-shadow-2);
+  transform: translateY(-2px);
+}
+
+/* 3. Collapsible Mechanics */
+.thrm-legal__list-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(.22,.61,.36,1);
+}
+
+.thrm-legal__list-wrapper > .thrm-legal__list {
+  overflow: hidden;
+}
+
+/* Open State for Master Toggle */
+.thrm-legal__master-toggle[aria-expanded="true"] + .thrm-legal__list-wrapper {
+  grid-template-rows: 1fr;
+}
+
+/* Adjust inner spacing to match the open FAQ list */
+.thrm-legal__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 12px;
+}
+
+/* Override original margins so it fits neatly inside the accordion */
+.thrm-legal__disclaimer {
+  margin-top: 0;
+}
+.thrm-legal__privacy {
+  margin-top: 0;
+}
+
+/* Icon rotation for Legal toggle */
+.thrm-legal__master-toggle[aria-expanded="true"] .thrm-faq__icon::after {
+  transform: translateX(-50%) rotate(90deg);
+  opacity: 0;
+}
+
+/* Ensure clicks always register on the button, not the text inside */
+.thrm-faq__master-btn > *,
+.thrm-legal__master-toggle > *,
+.thrm-faq__q > * {
+  pointer-events: none;
+}
+
+.thrm-faq__master-btn,
+.thrm-legal__master-toggle {
+  cursor: pointer;
+  user-select: none;
 }
