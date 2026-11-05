@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'BoomBox';
-    src: url('/fonts/BoomBox.woff2') format('woff2'),
-         url('/fonts/BoomBox.woff')  format('woff');
+    src: url('../fonts/BoomBox.woff2') format('woff2'),
+         url('../fonts/BoomBox.woff')  format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -1252,7 +1252,8 @@
   color:rgba(245,245,247,.5);
 }
 .thrm-footer__bottom p{ margin:0; }
-.thrm-footer__legal{ font-family:var(--thrm-mono); font-size:11px; letter-spacing:.1em; padding-inline-start: 35rem; }
+.thrm-footer__legal{ font-family:var(--thrm-mono); font-size:11px; letter-spacing:.1em; 
+   }
 .thrm-footer__legal a{
   color:rgba(245,245,247,.65);
   text-decoration:none;
@@ -1436,7 +1437,7 @@
 }
 @media (min-width:900px){
   .thrm-header__menu{ display:flex; }
-  /* FIXED: Removed .thrm-footer__legal padding hack */
+  
 }
 .thrm-header__menu a{
   display:inline-block;
@@ -1557,7 +1558,6 @@
 }
 @media (min-width:768px){
   .thrm-legal{ padding:92px 0; }
-  /* FIXED: Removed .thrm-footer__legal padding hack */
 }
 .thrm-legal .thrm-h2{ margin-top:0; }
 .thrm-legal__disclaimer{
@@ -1808,10 +1808,9 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03); /* Optional: adds a very subtle depth */
 }
 
-.thrm-wrap>.font-boombox {
+.thrm-footer__legal>.font-boombox {
   font-family: 'BoomBox';
-  font-size: 0.85rem;
-  color: var(--thrm-ink);
+  font-size: 0.5rem;
 }
 
 
